@@ -8,7 +8,7 @@
 ## 🚀 About Me
 
 - 🎓 2nd Year **B.Tech Student**
-- 📱 **Flutter Developer** (GetX, Firebase)
+- 📱 **Flutter Developer** (GetX, Firebase, Supabase)
 - 🤖 Exploring **AI-powered applications** 
 
 ---
@@ -25,4 +25,4 @@
 - Flutter
 - GetX (State Management)
 - Firebase (Auth, Firestore)
-- Supabase 
+- Supabase (Auth, Storage)
