@@ -25,3 +25,4 @@
 - Flutter
 - GetX (State Management)
 - Firebase (Auth, Firestore)
+- Supabase 
