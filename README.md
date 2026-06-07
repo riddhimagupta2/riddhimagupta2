@@ -88,7 +88,7 @@ Loan and Credit Management System with SRS documentation and UML diagrams.
 
 [![GitHub](https://img.shields.io/badge/GitHub-riddhimagupta2-181717?style=for-the-badge&logo=github)](https://github.com/riddhimagupta2)
 
-[![Email](https://img.shields.io/badge/Email-griddhima2210%40gmail.com-red?style=for-the-badge&logo=gmail)](mailto:griddhima2210@gmail.com)
+[![Email](https://img.shields.io/badge/Email-riddhimag226%40gmail.com-red?style=for-the-badge&logo=gmail)](mailto:griddhima2210@gmail.com)
 
 ---
 
