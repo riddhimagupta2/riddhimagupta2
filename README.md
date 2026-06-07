@@ -21,7 +21,7 @@
 
 🚀 Open Source Contributor
 
-📫 Reach me at: **griddhima2210@gmail.com**
+📫 Reach me at: **riddhimag226@gmail.com**
 
 ---
 
