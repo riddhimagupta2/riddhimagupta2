@@ -27,17 +27,17 @@ jobs:
         with:
           python-version: "3.12"
 
-      - name: Banner + radar charts (no network needed)
-        run: |
-          python scripts/banner/generate.py
-          python scripts/radar.py
-
-      - name: Stats + language cards (GitHub API)
+      - name: Stats + language cards (GitHub API) — also refreshes langmix.json
         env:
           # Optional: add a PAT as repo secret GH_PAT to also count private contributions.
           GITHUB_TOKEN: ${{ secrets.GH_PAT || secrets.GITHUB_TOKEN }}
           GH_USER: ${{ github.repository_owner }}
         run: python scripts/cards.py
+
+      - name: Banner + radar charts (reads fresh langmix.json from previous step)
+        run: |
+          python scripts/banner/generate.py
+          python scripts/radar.py
 
       - name: Commit changes
         run: |
