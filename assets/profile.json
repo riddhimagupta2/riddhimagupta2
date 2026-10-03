@@ -1,13 +1,66 @@
 {
   "username": "riddhimagupta2",
-  "name": "Riddhima Gupta",
   "accent": "#36BCF7",
-  "command": "./profile.sh --live",
-  "lines": [
-    ["name", "Riddhima Gupta"],
-    ["role", "Flutter Developer | BTech CSE Student"],
-    ["focus", "Mobile apps, backend, open source"],
-    ["learning", "DSA | Django | Data Science | DevOps"],
-    ["status", "shipping real things, every day"]
+  "command": "profile.sh --live",
+  "photo": "assets/photo.jpg",
+  "status_left": "FLUTTER DEVELOPER · BUILDING",
+  "status_right": "OPEN SOURCE · GSSoC 2026",
+  "rows": [
+    [
+      "Subject",
+      "Riddhima Gupta"
+    ],
+    [
+      "Role",
+      "Flutter Developer · CSE'28"
+    ],
+    [
+      "Origin",
+      "Ambala, Haryana"
+    ],
+    [
+      "Education",
+      "BTech · MMDU(Deemed to be University)"
+    ],
+    [
+      "Status",
+      "Building + Learning"
+    ],
+    [
+      "ToolChain",
+      "Flutter · Git · GitHub · Postman"
+    ],
+    [
+      "Core.Lang",
+      "Dart · Python · C++ · SQL"
+    ],
+    [
+      "Core.Frontend",
+      "Flutter · HTML · CSS"
+    ],
+    [
+      "Core.Backend",
+      "Django · Firebase · Supabase"
+    ],
+    [
+      "Core.Database",
+      "PostgreSQL · Firestore · SQL"
+    ],
+    [
+      "Core.Infra",
+      "Vercel · Render · Docker"
+    ],
+    [
+      "Core.OpenSource",
+      "GSSoC 2026 · GDG On Campus"
+    ],
+    [
+      "Grid.GitHub",
+      "riddhimagupta2"
+    ],
+    [
+      "Grid.LinkedIn",
+      "/in/riddhimagupta22"
+    ]
   ]
 }

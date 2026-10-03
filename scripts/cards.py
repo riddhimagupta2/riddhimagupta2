@@ -1,6 +1,4 @@
 """Generates the GitHub stats card and the most-used-languages card as SVGs.
-Also writes assets/langmix.json from real API language data so the language
-radar chart in ## signals is always live, not hardcoded.
 
 Own generator on purpose: public stat services (github-readme-stats etc.) are
 shared instances that go down and break the whole README section.
@@ -8,7 +6,7 @@ shared instances that go down and break the whole README section.
 Run (real data):  GITHUB_TOKEN=xxx python scripts/cards.py
 Run (fake data):  python scripts/cards.py --demo        # no token needed
 Out: assets/card-stats-{dark,light}.svg, assets/card-langs-{dark,light}.svg
-     assets/langmix.json  (consumed by radar.py for the language radar)"""
+"""
 import json
 import os
 import sys
@@ -160,27 +158,6 @@ def langs_card(d, theme, accent):
     return "\n".join(o)
 
 
-def langmix_from_data(data):
-    """Convert the langs list from fetch() into the langmix.json radar format.
-
-    Scores are normalised so the top language is always 100, giving the radar
-    useful spread rather than tiny absolute-byte percentages.
-    """
-    top = data["langs"][:8]
-    if not top:
-        return None
-    max_size = max(v["size"] for _, v in top) or 1
-    axes = [
-        {"label": name, "value": round(100 * v["size"] / max_size)}
-        for name, v in top
-        if round(100 * v["size"] / max_size) >= 5   # skip tiny slivers
-    ]
-    # radar.py needs at least 3 axes
-    if len(axes) < 3:
-        return None
-    return {"title": "language mix", "note": "Auto-generated from GitHub API. Do not edit.", "axes": axes}
-
-
 if __name__ == "__main__":
     p = load_profile()
     if "--demo" in sys.argv:
@@ -193,10 +170,3 @@ if __name__ == "__main__":
     for theme in THEMES:
         write(f"card-stats-{theme}.svg", stats_card(data, theme, p["accent"], p["username"]))
         write(f"card-langs-{theme}.svg", langs_card(data, theme, p["accent"]))
-    # Keep the language radar in ## signals in sync with real repo data
-    lm = langmix_from_data(data)
-    if lm:
-        from theme import ASSETS
-        (ASSETS / "langmix.json").write_text(
-            json.dumps(lm, indent=2, ensure_ascii=False), encoding="utf-8")
-        print(f"wrote assets/langmix.json ({len(lm['axes'])} languages)")
