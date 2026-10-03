@@ -167,15 +167,6 @@ def build(theme, still=None):
 
     # ---- segments (what the left panel shows, in order)
     segs = []
-    for name, s in SHAPES.items():
-        pts = s["pts"]()
-        frames = []
-        for k in range(s["frames"]):
-            ax, ay = s["pose"](k, s["frames"])
-            frames.append(project(pts, ax, ay))
-        npts = max(len(f) + len(b) for f, b in frames)
-        segs.append(dict(name=name, label=f'{s["label"]} · {npts} PTS', dur=s["dur"], frames=frames))
-
     photo = ROOT / p.get("photo", "")
     portrait_cache = ROOT / "assets" / "portrait.json"
     portrait = None
@@ -207,9 +198,19 @@ def build(theme, still=None):
         except Exception as e:
             print("Could not load portrait cache:", e)
 
+    # Portrait image comes first, followed by geometric dot clouds (globe, torus, cube)
     if dots:
         portrait = dict(name="portrait", label=f"PORTRAIT · {len(dots)} PTS · FS/SERPENTINE", dur=7.0, dots=dots)
         segs.append(portrait)
+
+    for name, s in SHAPES.items():
+        pts = s["pts"]()
+        frames = []
+        for k in range(s["frames"]):
+            ax, ay = s["pose"](k, s["frames"])
+            frames.append(project(pts, ax, ay))
+        npts = max(len(f) + len(b) for f, b in frames)
+        segs.append(dict(name=name, label=f'{s["label"]} · {npts} PTS', dur=s["dur"], frames=frames))
 
     total = LEAD + sum(s["dur"] for s in segs) + TAIL
     starts, t = {}, LEAD
