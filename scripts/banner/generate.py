@@ -177,14 +177,39 @@ def build(theme, still=None):
         segs.append(dict(name=name, label=f'{s["label"]} · {npts} PTS', dur=s["dur"], frames=frames))
 
     photo = ROOT / p.get("photo", "")
+    portrait_cache = ROOT / "assets" / "portrait.json"
     portrait = None
+    dots = None
     if p.get("photo") and photo.is_file():
         try:
             dots = portrait_points(photo, invert=(theme == "light" and p.get("photo_light", "ink") == "ink"))
-            portrait = dict(name="portrait", label=f"PORTRAIT · {len(dots)} PTS · FS/SERPENTINE", dur=7.0, dots=dots)
-            segs.append(portrait)
+            # Cache dark and light portrait dots so CI can render portrait without raw photo.jpg
+            try:
+                import json
+                cached = {}
+                if portrait_cache.is_file():
+                    try:
+                        cached = json.loads(portrait_cache.read_text(encoding="utf-8"))
+                    except Exception:
+                        pass
+                cached[theme] = sorted(list(dots))
+                portrait_cache.write_text(json.dumps(cached), encoding="utf-8")
+            except Exception as e:
+                print("Could not save portrait cache:", e)
         except ImportError:
             print("Pillow not installed: skipping portrait (pip install pillow)")
+    elif portrait_cache.is_file():
+        try:
+            import json
+            cached = json.loads(portrait_cache.read_text(encoding="utf-8"))
+            pts = cached.get(theme) or cached.get("dark") or []
+            dots = set(tuple(x) for x in pts)
+        except Exception as e:
+            print("Could not load portrait cache:", e)
+
+    if dots:
+        portrait = dict(name="portrait", label=f"PORTRAIT · {len(dots)} PTS · FS/SERPENTINE", dur=7.0, dots=dots)
+        segs.append(portrait)
 
     total = LEAD + sum(s["dur"] for s in segs) + TAIL
     starts, t = {}, LEAD
