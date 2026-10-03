@@ -1,31 +1,28 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 440" width="480" height="440" role="img" aria-label="skills radar chart">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 440" width="480" height="440" role="img" aria-label="signals radar chart">
 <rect x="0.5" y="0.5" width="479" height="439" rx="12" fill="#0d1117" stroke="#30363d"/>
-<text x="240.0" y="38" text-anchor="middle" font-family="'JetBrains Mono','SFMono-Regular',Consolas,'Liberation Mono',monospace" font-size="15" font-weight="700" fill="#36BCF7">skills</text>
-<polygon points="240.0,213.6 259.1,222.8 263.8,243.4 250.6,260.0 229.4,260.0 216.2,243.4 220.9,222.8" fill="none" stroke="#30363d" stroke-width="1"/>
-<polygon points="240.0,189.2 278.2,207.6 287.6,248.9 261.2,282.0 218.8,282.0 192.4,248.9 201.8,207.6" fill="none" stroke="#30363d" stroke-width="1"/>
-<polygon points="240.0,164.8 297.2,192.4 311.4,254.3 271.8,304.0 208.2,304.0 168.6,254.3 182.8,192.4" fill="none" stroke="#30363d" stroke-width="1"/>
-<polygon points="240.0,140.4 316.3,177.1 335.2,259.7 282.3,325.9 197.7,325.9 144.8,259.7 163.7,177.1" fill="none" stroke="#30363d" stroke-width="1"/>
-<polygon points="240.0,116.0 335.4,161.9 358.9,265.1 292.9,347.9 187.1,347.9 121.1,265.1 144.6,161.9" fill="none" stroke="#30363d" stroke-width="1"/>
+<text x="240.0" y="38" text-anchor="middle" font-family="'JetBrains Mono','SFMono-Regular',Consolas,'Liberation Mono',monospace" font-size="15" font-weight="700" fill="#36BCF7">signals</text>
+<polygon points="240.0,213.6 261.1,225.8 261.1,250.2 240.0,262.4 218.9,250.2 218.9,225.8" fill="none" stroke="#30363d" stroke-width="1"/>
+<polygon points="240.0,189.2 282.3,213.6 282.3,262.4 240.0,286.8 197.7,262.4 197.7,213.6" fill="none" stroke="#30363d" stroke-width="1"/>
+<polygon points="240.0,164.8 303.4,201.4 303.4,274.6 240.0,311.2 176.6,274.6 176.6,201.4" fill="none" stroke="#30363d" stroke-width="1"/>
+<polygon points="240.0,140.4 324.5,189.2 324.5,286.8 240.0,335.6 155.5,286.8 155.5,189.2" fill="none" stroke="#30363d" stroke-width="1"/>
+<polygon points="240.0,116.0 345.7,177.0 345.7,299.0 240.0,360.0 134.3,299.0 134.3,177.0" fill="none" stroke="#30363d" stroke-width="1"/>
 <line x1="240" y1="238" x2="240.0" y2="116.0" stroke="#30363d"/>
-<line x1="240" y1="238" x2="335.4" y2="161.9" stroke="#30363d"/>
-<line x1="240" y1="238" x2="358.9" y2="265.1" stroke="#30363d"/>
-<line x1="240" y1="238" x2="292.9" y2="347.9" stroke="#30363d"/>
-<line x1="240" y1="238" x2="187.1" y2="347.9" stroke="#30363d"/>
-<line x1="240" y1="238" x2="121.1" y2="265.1" stroke="#30363d"/>
-<line x1="240" y1="238" x2="144.6" y2="161.9" stroke="#30363d"/>
-<polygon points="240.0,134.3 311.5,181.0 311.4,254.3 279.7,320.4 197.7,325.9 162.7,255.6 173.2,184.8" fill="#36BCF7" fill-opacity="0.25" stroke="#36BCF7" stroke-width="2" stroke-linejoin="round"><animate attributeName="opacity" from="0" to="1" dur="1.2s" fill="freeze"/></polygon>
-<circle cx="240.0" cy="134.3" r="4" fill="#36BCF7"><title>Flutter: 85</title></circle>
+<line x1="240" y1="238" x2="345.7" y2="177.0" stroke="#30363d"/>
+<line x1="240" y1="238" x2="345.7" y2="299.0" stroke="#30363d"/>
+<line x1="240" y1="238" x2="240.0" y2="360.0" stroke="#30363d"/>
+<line x1="240" y1="238" x2="134.3" y2="299.0" stroke="#30363d"/>
+<line x1="240" y1="238" x2="134.3" y2="177.0" stroke="#30363d"/>
+<polygon points="240.0,116.0 329.8,186.2 298.1,271.6 240.0,318.5 187.2,268.5 134.3,177.0" fill="#36BCF7" fill-opacity="0.25" stroke="#36BCF7" stroke-width="2" stroke-linejoin="round"><animate attributeName="opacity" from="0" to="1" dur="1.2s" fill="freeze"/></polygon>
+<circle cx="240.0" cy="116.0" r="4" fill="#36BCF7"><title>Flutter: 100</title></circle>
 <text x="240.0" y="94.0" text-anchor="middle" font-family="'JetBrains Mono','SFMono-Regular',Consolas,'Liberation Mono',monospace" font-size="13" fill="#e6edf3">Flutter</text>
-<circle cx="311.5" cy="181.0" r="4" fill="#36BCF7"><title>Firebase: 75</title></circle>
-<text x="351.0" y="147.5" text-anchor="start" font-family="'JetBrains Mono','SFMono-Regular',Consolas,'Liberation Mono',monospace" font-size="13" fill="#e6edf3">Firebase</text>
-<circle cx="311.4" cy="254.3" r="4" fill="#36BCF7"><title>Django: 60</title></circle>
-<text x="378.4" y="274.6" text-anchor="start" font-family="'JetBrains Mono','SFMono-Regular',Consolas,'Liberation Mono',monospace" font-size="13" fill="#e6edf3">Django</text>
-<circle cx="279.7" cy="320.4" r="4" fill="#36BCF7"><title>REST APIs: 75</title></circle>
-<text x="301.6" y="377.9" text-anchor="start" font-family="'JetBrains Mono','SFMono-Regular',Consolas,'Liberation Mono',monospace" font-size="13" fill="#e6edf3">REST APIs</text>
-<circle cx="197.7" cy="325.9" r="4" fill="#36BCF7"><title>Git/GitHub: 80</title></circle>
-<text x="178.4" y="377.9" text-anchor="end" font-family="'JetBrains Mono','SFMono-Regular',Consolas,'Liberation Mono',monospace" font-size="13" fill="#e6edf3">Git/GitHub</text>
-<circle cx="162.7" cy="255.6" r="4" fill="#36BCF7"><title>SQL: 65</title></circle>
-<text x="101.6" y="274.6" text-anchor="end" font-family="'JetBrains Mono','SFMono-Regular',Consolas,'Liberation Mono',monospace" font-size="13" fill="#e6edf3">SQL</text>
-<circle cx="173.2" cy="184.8" r="4" fill="#36BCF7"><title>Open Source: 70</title></circle>
-<text x="129.0" y="147.5" text-anchor="end" font-family="'JetBrains Mono','SFMono-Regular',Consolas,'Liberation Mono',monospace" font-size="13" fill="#e6edf3">Open Source</text>
+<circle cx="329.8" cy="186.2" r="4" fill="#36BCF7"><title>Firebase: 85</title></circle>
+<text x="363.0" y="172.0" text-anchor="start" font-family="'JetBrains Mono','SFMono-Regular',Consolas,'Liberation Mono',monospace" font-size="13" fill="#e6edf3">Firebase</text>
+<circle cx="298.1" cy="271.6" r="4" fill="#36BCF7"><title>Django: 55</title></circle>
+<text x="363.0" y="314.0" text-anchor="start" font-family="'JetBrains Mono','SFMono-Regular',Consolas,'Liberation Mono',monospace" font-size="13" fill="#e6edf3">Django</text>
+<circle cx="240.0" cy="318.5" r="4" fill="#36BCF7"><title>REST APIs: 66</title></circle>
+<text x="240.0" y="392.0" text-anchor="middle" font-family="'JetBrains Mono','SFMono-Regular',Consolas,'Liberation Mono',monospace" font-size="13" fill="#e6edf3">REST APIs</text>
+<circle cx="187.2" cy="268.5" r="4" fill="#36BCF7"><title>SQL: 50</title></circle>
+<text x="117.0" y="314.0" text-anchor="end" font-family="'JetBrains Mono','SFMono-Regular',Consolas,'Liberation Mono',monospace" font-size="13" fill="#e6edf3">SQL</text>
+<circle cx="134.3" cy="177.0" r="4" fill="#36BCF7"><title>Open Source: 100</title></circle>
+<text x="117.0" y="165.0" text-anchor="end" font-family="'JetBrains Mono','SFMono-Regular',Consolas,'Liberation Mono',monospace" font-size="13" fill="#e6edf3">Open Source</text>
 </svg>

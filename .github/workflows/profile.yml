@@ -27,20 +27,23 @@ jobs:
         with:
           python-version: "3.12"
 
-      - name: Install Pillow (only used for the portrait dither)
+      - name: Install Pillow (used for the portrait dither)
         run: pip install pillow
 
-      - name: Banner + radar charts (no network needed)
-        run: |
-          python scripts/banner/generate.py
-          python scripts/radar.py
+      - name: Generate banner
+        run: python scripts/banner/generate.py
 
       - name: Stats + language cards (GitHub API)
         env:
-          # Optional: add a PAT as repo secret GH_PAT to also count private contributions.
-          GITHUB_TOKEN: ${{ secrets.GH_PAT || secrets.GITHUB_TOKEN }}
-          GH_USER: ${{ github.repository_owner }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_USER: riddhimagupta2
         run: python scripts/cards.py
+
+      - name: Dynamic radar charts (GitHub API)
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_USER: riddhimagupta2
+        run: python scripts/radar.py
 
       - name: Commit changes
         run: |

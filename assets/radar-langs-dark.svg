@@ -1,25 +1,19 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 440" width="480" height="440" role="img" aria-label="language stack radar chart">
 <rect x="0.5" y="0.5" width="479" height="439" rx="12" fill="#0d1117" stroke="#30363d"/>
 <text x="240.0" y="38" text-anchor="middle" font-family="'JetBrains Mono','SFMono-Regular',Consolas,'Liberation Mono',monospace" font-size="15" font-weight="700" fill="#36BCF7">language stack</text>
-<polygon points="240.0,213.6 263.2,230.5 254.3,257.7 225.7,257.7 216.8,230.5" fill="none" stroke="#30363d" stroke-width="1"/>
-<polygon points="240.0,189.2 286.4,222.9 268.7,277.5 211.3,277.5 193.6,222.9" fill="none" stroke="#30363d" stroke-width="1"/>
-<polygon points="240.0,164.8 309.6,215.4 283.0,297.2 197.0,297.2 170.4,215.4" fill="none" stroke="#30363d" stroke-width="1"/>
-<polygon points="240.0,140.4 332.8,207.8 297.4,317.0 182.6,317.0 147.2,207.8" fill="none" stroke="#30363d" stroke-width="1"/>
-<polygon points="240.0,116.0 356.0,200.3 311.7,336.7 168.3,336.7 124.0,200.3" fill="none" stroke="#30363d" stroke-width="1"/>
+<polygon points="240.0,213.6 261.1,250.2 218.9,250.2" fill="none" stroke="#30363d" stroke-width="1"/>
+<polygon points="240.0,189.2 282.3,262.4 197.7,262.4" fill="none" stroke="#30363d" stroke-width="1"/>
+<polygon points="240.0,164.8 303.4,274.6 176.6,274.6" fill="none" stroke="#30363d" stroke-width="1"/>
+<polygon points="240.0,140.4 324.5,286.8 155.5,286.8" fill="none" stroke="#30363d" stroke-width="1"/>
+<polygon points="240.0,116.0 345.7,299.0 134.3,299.0" fill="none" stroke="#30363d" stroke-width="1"/>
 <line x1="240" y1="238" x2="240.0" y2="116.0" stroke="#30363d"/>
-<line x1="240" y1="238" x2="356.0" y2="200.3" stroke="#30363d"/>
-<line x1="240" y1="238" x2="311.7" y2="336.7" stroke="#30363d"/>
-<line x1="240" y1="238" x2="168.3" y2="336.7" stroke="#30363d"/>
-<line x1="240" y1="238" x2="124.0" y2="200.3" stroke="#30363d"/>
-<polygon points="240.0,134.3 321.2,211.6 283.0,297.2 193.4,302.2 170.4,215.4" fill="#36BCF7" fill-opacity="0.25" stroke="#36BCF7" stroke-width="2" stroke-linejoin="round"><animate attributeName="opacity" from="0" to="1" dur="1.2s" fill="freeze"/></polygon>
-<circle cx="240.0" cy="134.3" r="4" fill="#36BCF7"><title>Dart: 85</title></circle>
+<line x1="240" y1="238" x2="345.7" y2="299.0" stroke="#30363d"/>
+<line x1="240" y1="238" x2="134.3" y2="299.0" stroke="#30363d"/>
+<polygon points="240.0,146.5 263.2,251.4 236.8,239.8" fill="#36BCF7" fill-opacity="0.25" stroke="#36BCF7" stroke-width="2" stroke-linejoin="round"><animate attributeName="opacity" from="0" to="1" dur="1.2s" fill="freeze"/></polygon>
+<circle cx="240.0" cy="146.5" r="4" fill="#36BCF7"><title>Dart: 75</title></circle>
 <text x="240.0" y="94.0" text-anchor="middle" font-family="'JetBrains Mono','SFMono-Regular',Consolas,'Liberation Mono',monospace" font-size="13" fill="#e6edf3">Dart</text>
-<circle cx="321.2" cy="211.6" r="4" fill="#36BCF7"><title>Python: 70</title></circle>
-<text x="375.1" y="199.1" text-anchor="start" font-family="'JetBrains Mono','SFMono-Regular',Consolas,'Liberation Mono',monospace" font-size="13" fill="#e6edf3">Python</text>
-<circle cx="283.0" cy="297.2" r="4" fill="#36BCF7"><title>C++: 60</title></circle>
-<text x="323.5" y="364.9" text-anchor="start" font-family="'JetBrains Mono','SFMono-Regular',Consolas,'Liberation Mono',monospace" font-size="13" fill="#e6edf3">C++</text>
-<circle cx="193.4" cy="302.2" r="4" fill="#36BCF7"><title>SQL: 65</title></circle>
-<text x="156.5" y="364.9" text-anchor="end" font-family="'JetBrains Mono','SFMono-Regular',Consolas,'Liberation Mono',monospace" font-size="13" fill="#e6edf3">SQL</text>
-<circle cx="170.4" cy="215.4" r="4" fill="#36BCF7"><title>HTML/CSS: 60</title></circle>
-<text x="104.9" y="199.1" text-anchor="end" font-family="'JetBrains Mono','SFMono-Regular',Consolas,'Liberation Mono',monospace" font-size="13" fill="#e6edf3">HTML/CSS</text>
+<circle cx="263.2" cy="251.4" r="4" fill="#36BCF7"><title>C++: 22</title></circle>
+<text x="363.0" y="314.0" text-anchor="start" font-family="'JetBrains Mono','SFMono-Regular',Consolas,'Liberation Mono',monospace" font-size="13" fill="#e6edf3">C++</text>
+<circle cx="236.8" cy="239.8" r="4" fill="#36BCF7"><title>HTML: 3</title></circle>
+<text x="117.0" y="314.0" text-anchor="end" font-family="'JetBrains Mono','SFMono-Regular',Consolas,'Liberation Mono',monospace" font-size="13" fill="#e6edf3">HTML</text>
 </svg>

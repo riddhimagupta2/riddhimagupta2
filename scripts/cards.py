@@ -9,13 +9,16 @@ Out: assets/card-stats-{dark,light}.svg, assets/card-langs-{dark,light}.svg
 """
 import json
 import os
+import pathlib
 import sys
 import urllib.request
 from xml.sax.saxutils import escape
 
-from theme import FONT, THEMES, load_profile, write
+from theme import FONT, ROOT, THEMES, load_profile, write
 
 API = "https://api.github.com/graphql"
+CACHE_DIR = ROOT / ".cache"
+CACHE_FILE = CACHE_DIR / "github_data.json"
 
 QUERY = """
 query($login: String!, $after: String) {
@@ -24,18 +27,29 @@ query($login: String!, $after: String) {
     followers { totalCount }
     pullRequests { totalCount }
     issues { totalCount }
-    repositoriesContributedTo(first: 1,
+    repositoriesContributedTo(first: 100,
         contributionTypes: [COMMIT, ISSUE, PULL_REQUEST, REPOSITORY]) { totalCount }
     contributionsCollection {
       totalCommitContributions
       restrictedContributionsCount
     }
-    repositories(ownerAffiliations: OWNER, isFork: false, first: 100, after: $after,
+    repositories(ownerAffiliations: OWNER, first: 100, after: $after,
                  privacy: PUBLIC) {
       totalCount
       pageInfo { hasNextPage endCursor }
       nodes {
+        name
+        description
+        isFork
         stargazerCount
+        forkCount
+        repositoryTopics(first: 10) {
+          nodes {
+            topic {
+              name
+            }
+          }
+        }
         languages(first: 10, orderBy: {field: SIZE, direction: DESC}) {
           edges { size node { name color } }
         }
@@ -55,6 +69,8 @@ def gql(login, token, after=None):
         data = json.load(r)
     if "errors" in data:
         raise SystemExit(f"GitHub API error: {data['errors']}")
+    if not data.get("data") or not data["data"].get("user"):
+        raise SystemExit(f"GitHub API error: user '{login}' not found or no data returned.")
     return data["data"]["user"]
 
 
@@ -67,36 +83,98 @@ def fetch(login, token):
         if not page["pageInfo"]["hasNextPage"]:
             break
         after = page["pageInfo"]["endCursor"]
-    return summarize(user, repos)
+    data = summarize(user, repos)
+    save_cache(data)
+    return data
+
+
+def save_cache(data):
+    try:
+        CACHE_DIR.mkdir(parents=True, exist_ok=True)
+        CACHE_FILE.write_text(json.dumps(data, indent=2, ensure_ascii=False), encoding="utf-8")
+    except Exception as e:
+        print(f"Warning: could not write cache file: {e}", file=sys.stderr)
+
+
+def load_cache():
+    if CACHE_FILE.is_file():
+        try:
+            return json.loads(CACHE_FILE.read_text(encoding="utf-8"))
+        except Exception:
+            return None
+    return None
 
 
 def summarize(user, repos):
     langs = {}
+    repo_details = []
+
     for repo in repos:
-        for e in repo["languages"]["edges"]:
+        # Collect languages per repo
+        repo_lang_dict = {}
+        for e in repo.get("languages", {}).get("edges", []):
             n = e["node"]
-            cur = langs.setdefault(n["name"], {"size": 0, "color": n["color"] or "#8b949e"})
-            cur["size"] += e["size"]
-    cc = user["contributionsCollection"]
+            repo_lang_dict[n["name"]] = e["size"]
+            # Language totals for most used languages card come from owned original repositories
+            if not repo.get("isFork"):
+                cur = langs.setdefault(n["name"], {"size": 0, "color": n["color"] or "#8b949e"})
+                cur["size"] += e["size"]
+
+        # Collect topics
+        topics = [
+            t["topic"]["name"]
+            for t in repo.get("repositoryTopics", {}).get("nodes", [])
+            if t.get("topic") and t["topic"].get("name")
+        ]
+
+        repo_details.append({
+            "name": repo.get("name") or "",
+            "description": repo.get("description") or "",
+            "is_fork": bool(repo.get("isFork")),
+            "stars": repo.get("stargazerCount", 0),
+            "forks": repo.get("forkCount", 0),
+            "topics": topics,
+            "languages": repo_lang_dict,
+        })
+
+    cc = user.get("contributionsCollection", {})
+    commits = cc.get("totalCommitContributions", 0) + cc.get("restrictedContributionsCount", 0)
+    owned_original = [r for r in repos if not r.get("isFork")]
+
     return {
-        "name": user["name"] or "",
-        "stars": sum(r["stargazerCount"] for r in repos),
-        "commits": cc["totalCommitContributions"] + cc["restrictedContributionsCount"],
-        "prs": user["pullRequests"]["totalCount"],
-        "issues": user["issues"]["totalCount"],
-        "contributed": user["repositoriesContributedTo"]["totalCount"],
-        "followers": user["followers"]["totalCount"],
-        "repos": user["repositories"]["totalCount"],
+        "name": user.get("name") or "",
+        "stars": sum(r.get("stargazerCount", 0) for r in owned_original),
+        "commits": commits,
+        "prs": user.get("pullRequests", {}).get("totalCount", 0),
+        "issues": user.get("issues", {}).get("totalCount", 0),
+        "contributed": user.get("repositoriesContributedTo", {}).get("totalCount", 0),
+        "followers": user.get("followers", {}).get("totalCount", 0),
+        "repos": len(owned_original),
+        "total_public_repos": user.get("repositories", {}).get("totalCount", len(repos)),
         "langs": sorted(langs.items(), key=lambda kv: -kv[1]["size"]),
+        "repo_details": repo_details,
     }
 
 
 DEMO = {
     "name": "Riddhima Gupta", "stars": 12, "commits": 340, "prs": 18, "issues": 6,
-    "contributed": 9, "followers": 24, "repos": 15,
-    "langs": [("Dart", {"size": 620, "color": "#00B4AB"}), ("Python", {"size": 210, "color": "#3572A5"}),
-              ("C++", {"size": 110, "color": "#f34b7d"}), ("HTML", {"size": 40, "color": "#e34c26"}),
-              ("Shell", {"size": 20, "color": "#89e051"})],
+    "contributed": 9, "followers": 24, "repos": 14, "total_public_repos": 45,
+    "langs": [("Dart", {"size": 1975338, "color": "#00B4AB"}),
+              ("Python", {"size": 1500000, "color": "#3572A5"}),
+              ("C++", {"size": 593626, "color": "#f34b7d"}),
+              ("JavaScript", {"size": 420000, "color": "#f1e05a"}),
+              ("HTML", {"size": 331233, "color": "#e34c26"})],
+    "repo_details": [
+        {"name": "DocTalk", "description": "Healthcare appointment app with Firebase & REST API", "is_fork": False, "stars": 2, "topics": ["flutter", "firebase"], "languages": {"Dart": 739350, "HTML": 133424}},
+        {"name": "aurasync_ai", "description": "Cross-platform mobile application", "is_fork": False, "stars": 1, "topics": ["flutter", "dart"], "languages": {"Dart": 203431, "C++": 25745}},
+        {"name": "Boutique_management", "description": "Flutter shop app", "is_fork": False, "stars": 0, "topics": ["flutter"], "languages": {"Dart": 309966, "C++": 26939}},
+        {"name": "snapii", "description": "Flutter REST API photo app", "is_fork": False, "stars": 0, "topics": ["api", "flutter"], "languages": {"Dart": 299099, "C++": 25242}},
+        {"name": "strings_and_decompiled_zip", "description": "FastAPI Django service for APK analysis", "is_fork": True, "stars": 0, "topics": ["django", "api"], "languages": {"Python": 80000}},
+        {"name": "Truxify", "description": "Open-source Flutter logistics platform", "is_fork": True, "stars": 1, "topics": ["flutter", "open-source"], "languages": {"Dart": 500000}},
+        {"name": "Uni-Event", "description": "Campus event platform with Firebase", "is_fork": True, "stars": 0, "topics": ["firebase"], "languages": {"JavaScript": 200000}},
+        {"name": "AI-dev-assistant", "description": "GSSoC 2026 AI tool", "is_fork": True, "stars": 0, "topics": ["python", "open-source"], "languages": {"Python": 120000}},
+        {"name": "WalkMate", "description": "C++ database utility", "is_fork": False, "stars": 0, "topics": ["database", "cpp"], "languages": {"C++": 24799, "Dart": 5865}},
+    ]
 }
 
 
@@ -161,12 +239,18 @@ def langs_card(d, theme, accent):
 if __name__ == "__main__":
     p = load_profile()
     if "--demo" in sys.argv:
+        print("Running cards.py in --demo mode (fake data)")
         data = DEMO
     else:
         token = os.environ.get("GITHUB_TOKEN") or os.environ.get("GH_TOKEN")
         if not token:
-            raise SystemExit("Set GITHUB_TOKEN (or run with --demo to preview fake numbers).")
-        data = fetch(os.environ.get("GH_USER", p["username"]), token)
+            raise SystemExit("Error: GITHUB_TOKEN environment variable is not set. Run with --demo for local testing.")
+        target_user = os.environ.get("GH_USER") or p.get("username", "riddhimagupta2")
+        print(f"Fetching GitHub statistics for user: {target_user} ...")
+        data = fetch(target_user, token)
+        print(f"Successfully fetched real GitHub data for {target_user}: "
+              f"{data['stars']} stars, {data['commits']} commits, {data['repos']} repos, {len(data['langs'])} languages.")
+
     for theme in THEMES:
         write(f"card-stats-{theme}.svg", stats_card(data, theme, p["accent"], p["username"]))
         write(f"card-langs-{theme}.svg", langs_card(data, theme, p["accent"]))
