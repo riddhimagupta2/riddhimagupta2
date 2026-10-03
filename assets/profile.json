@@ -2,6 +2,7 @@
   "username": "riddhimagupta2",
   "accent": "#36BCF7",
   "command": "profile.sh --live",
+  "photo": "assets/photo.jpg",
   "status_left": "FLUTTER DEVELOPER · BUILDING",
   "status_right": "OPEN SOURCE · GSSoC 2026",
   "rows": [
