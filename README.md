@@ -32,7 +32,7 @@
 Hi, I'm **Riddhima Gupta** 👋, a B.Tech Computer Engineering student and Flutter Developer.
 I'm interested in building cross-platform applications, working with backend APIs, and contributing to open source.
 
-- 🎓 **B.Tech in Computer Engineering** at Maharishi Markandeshwar (Deemed to be University), Mullana — current CGPA **8.9**.
+- 🎓 **B.Tech in Computer Engineering** at Maharishi Markandeshwar (Deemed to be University), Mullana - current CGPA **8.9**.
 - 📱 **Flutter Developer Intern** at Wesalvout Technologies, working on the Crescent Academy EdTech platform.
 - 🧩 Building and maintaining mobile applications with **Flutter and Dart**, REST APIs, Firebase, authentication, notifications, and state management.
 - 🌐 **GSSoC 2026 Contributor**, contributing to open-source projects across Flutter, React, Python, and web technologies.
@@ -90,13 +90,13 @@ I'm interested in building cross-platform applications, working with backend API
 
 ## Open source & community
 
-**GirlScript Summer of Code (GSSoC) 2026 — Contributor**
+**GirlScript Summer of Code (GSSoC) 2026 - Contributor**
 
 - Contributed to projects involving Flutter, React, Python, and web technologies.
 - Worked on UI improvements, validation, feature enhancements, testing, and code refactoring.
 - Collaborated with maintainers through GitHub Issues, Pull Requests, and code reviews.
 
-**Google Developers Group On Campus MM(DU) — Core Member**
+**Google Developers Group On Campus MM(DU) - Core Member**
 
 - Helped organize technical workshops, coding events, and hackathons.
 - Coordinated volunteers and supported event logistics and student participation.
@@ -105,10 +105,10 @@ I'm interested in building cross-platform applications, working with backend API
 
 ## Achievements
 
-- 🥈 **1st Runner-Up — Tech4SDG 2.0 Ideathon** (2026)
-- 🏁 **Finalist — Hackureka Hackathon** (2025)
-- 🎯 **Organizer — Hackureka 2.0 National Level Hackathon**, with 600+ registrations and 300+ participants in the hybrid event.
-- 💻 **Organizer — Tech Hunt 2.0**, with 100+ student participants.
+- 🥈 **1st Runner-Up : Tech4SDG 2.0 Ideathon** (2026)
+- 🏁 **Finalist : Hackureka Hackathon** (2025)
+- 🎯 **Organizer : Hackureka 2.0 National Level Hackathon**, with 600+ registrations and 300+ participants in the hybrid event.
+- 💻 **Organizer : Tech Hunt 2.0**, with 100+ student participants.
 
 ---
 
