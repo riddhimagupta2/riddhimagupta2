@@ -1,0 +1,13 @@
+{
+  "username": "riddhimagupta2",
+  "name": "Riddhima Gupta",
+  "accent": "#36BCF7",
+  "command": "./profile.sh --live",
+  "lines": [
+    ["name", "Riddhima Gupta"],
+    ["role", "Flutter Developer | BTech CSE Student"],
+    ["focus", "Mobile apps, backend, open source"],
+    ["learning", "DSA | Django | Data Science | DevOps"],
+    ["status", "shipping real things, every day"]
+  ]
+}

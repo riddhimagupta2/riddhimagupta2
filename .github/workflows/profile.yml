@@ -1,0 +1,47 @@
+name: Refresh profile assets
+
+on:
+  schedule:
+    - cron: "17 3 * * *"        # every day, 03:17 UTC
+  workflow_dispatch:             # "Run workflow" button in the Actions tab
+  push:
+    branches: [main]
+    paths:
+      - "assets/*.json"
+      - "scripts/**"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: profile-assets
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Banner + radar charts (no network needed)
+        run: |
+          python scripts/banner/generate.py
+          python scripts/radar.py
+
+      - name: Stats + language cards (GitHub API)
+        env:
+          # Optional: add a PAT as repo secret GH_PAT to also count private contributions.
+          GITHUB_TOKEN: ${{ secrets.GH_PAT || secrets.GITHUB_TOKEN }}
+          GH_USER: ${{ github.repository_owner }}
+        run: python scripts/cards.py
+
+      - name: Commit changes
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add assets
+          git diff --staged --quiet || (git commit -m "chore: refresh profile assets" && git push)
