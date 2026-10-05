@@ -11,15 +11,15 @@
 <line x1="240" y1="238" x2="311.7" y2="336.7" stroke="#d0d7de"/>
 <line x1="240" y1="238" x2="168.3" y2="336.7" stroke="#d0d7de"/>
 <line x1="240" y1="238" x2="124.0" y2="200.3" stroke="#d0d7de"/>
-<polygon points="240.0,180.7 276.0,226.3 250.0,251.8 235.7,243.9 238.8,237.6" fill="#36BCF7" fill-opacity="0.25" stroke="#36BCF7" stroke-width="2" stroke-linejoin="round"><animate attributeName="opacity" from="0" to="1" dur="1.2s" fill="freeze"/></polygon>
-<circle cx="240.0" cy="180.7" r="4" fill="#36BCF7"><title>Dart: 47</title></circle>
+<polygon points="240.0,184.3 273.6,227.1 249.3,250.8 235.7,243.9 229.6,234.6" fill="#36BCF7" fill-opacity="0.25" stroke="#36BCF7" stroke-width="2" stroke-linejoin="round"><animate attributeName="opacity" from="0" to="1" dur="1.2s" fill="freeze"/></polygon>
+<circle cx="240.0" cy="184.3" r="4" fill="#36BCF7"><title>Dart: 44</title></circle>
 <text x="240.0" y="94.0" text-anchor="middle" font-family="'JetBrains Mono','SFMono-Regular',Consolas,'Liberation Mono',monospace" font-size="13" fill="#1f2328">Dart</text>
-<circle cx="276.0" cy="226.3" r="4" fill="#36BCF7"><title>Python: 31</title></circle>
+<circle cx="273.6" cy="227.1" r="4" fill="#36BCF7"><title>Python: 29</title></circle>
 <text x="375.1" y="199.1" text-anchor="start" font-family="'JetBrains Mono','SFMono-Regular',Consolas,'Liberation Mono',monospace" font-size="13" fill="#1f2328">Python</text>
-<circle cx="250.0" cy="251.8" r="4" fill="#36BCF7"><title>C++: 14</title></circle>
+<circle cx="249.3" cy="250.8" r="4" fill="#36BCF7"><title>C++: 13</title></circle>
 <text x="323.5" y="364.9" text-anchor="start" font-family="'JetBrains Mono','SFMono-Regular',Consolas,'Liberation Mono',monospace" font-size="13" fill="#1f2328">C++</text>
 <circle cx="235.7" cy="243.9" r="4" fill="#36BCF7"><title>HTML: 6</title></circle>
 <text x="156.5" y="364.9" text-anchor="end" font-family="'JetBrains Mono','SFMono-Regular',Consolas,'Liberation Mono',monospace" font-size="13" fill="#1f2328">HTML</text>
-<circle cx="238.8" cy="237.6" r="4" fill="#36BCF7"><title>JavaScript: 1</title></circle>
+<circle cx="229.6" cy="234.6" r="4" fill="#36BCF7"><title>JavaScript: 9</title></circle>
 <text x="104.9" y="199.1" text-anchor="end" font-family="'JetBrains Mono','SFMono-Regular',Consolas,'Liberation Mono',monospace" font-size="13" fill="#1f2328">JavaScript</text>
 </svg>
